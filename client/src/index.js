@@ -1,14 +1,23 @@
 import React, { StrictMode } from "react";
+import { Provider } from "react-redux";
+import store from "./store.js";
 import { createRoot } from "react-dom/client";
-import App from "./components/App";
+import App from "./App.js";
 import "tailwindcss/tailwind.css";
-import {BrowserRouter as Router} from 'react-router-dom'
+
+import { RouterProvider } from "react-router-dom";
+import { router } from "./routes/router.js"; 
+import BackgroundImage from "./components/visual/BackgroundImage.js";
+
 
 const root = createRoot(document.getElementById("root"));
 root.render(
-  <Router>
+  <Provider store={store}>
     <StrictMode>
-      <App />
+
+      <RouterProvider router={router} />   
+      {/* SEE router.js for <APP> entry */}
+        
     </StrictMode>
-  </Router>
+  </Provider>
 );
